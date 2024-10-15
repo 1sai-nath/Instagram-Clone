@@ -1,7 +1,8 @@
 import express, { urlencoded } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import userRoute from "./routes/user.route.js"
+import userRoute from "./routes/user.route.js";
+import postRoute from "./routes/post.route.js";
 import dotenv from "dotenv";
 import db from "./utils/db.js";
 dotenv.config({});
@@ -20,7 +21,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use("/api/v1/user",userRoute);
+app.use("/api/v1/user", userRoute);
+app.use("/api/v1/post", postRoute);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
